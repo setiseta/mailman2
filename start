@@ -1,0 +1,12 @@
+#!/bin/bash
+sed -e 's/.*DEFAULT_EMAIL_HOST.*/DEFAULT_EMAIL_HOST = "jdarc.fr"/' -i /etc/mailman/mm_cfg.py
+sed -e 's/.*DEFAULT_URL_HOST.*/DEFAULT_URL_HOST = "ml.jdarc.fr"/' -i /etc/mailman/mm_cfg.py
+sed -e 's/.*DEFAULT_SERVER_LANGUAGE.*/DEFAULT_SERVER_LANGUAGE = "fr"/' -i /etc/mailman/mm_cfg.py
+
+newlist --quiet mailman tom@tcweb.org password
+
+/etc/init.d/exim4 start
+/etc/init.d/mailman start
+/etc/init.d/apache2 start
+
+tail -f /var/log/mailman/* /var/log/exim4/*
