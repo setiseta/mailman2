@@ -1,0 +1,14 @@
+# Home dir for your Mailman installation -- aka Mailman's prefix
+# directory.
+MAILMAN_HOME=/var/lib/mailman
+MAILMAN_WRAP=MAILMAN_HOME/mail/mailman
+
+# User and group for Mailman, should match your --with-mail-gid
+# switch to Mailman's configure script.
+MAILMAN_USER=list
+MAILMAN_GROUP=daemon
+
+# Where to store messages sent to mailman-loop - used if the
+# mailman-owner addressbounces.
+MAILMAN_LOOP=MAILMAN_HOME/data/owner-bounces.mbox
+

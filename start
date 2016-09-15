@@ -1,9 +1,16 @@
 #!/bin/bash
-sed -e 's/.*DEFAULT_EMAIL_HOST.*/DEFAULT_EMAIL_HOST = "jdarc.fr"/' -i /etc/mailman/mm_cfg.py
-sed -e 's/.*DEFAULT_URL_HOST.*/DEFAULT_URL_HOST = "ml.jdarc.fr"/' -i /etc/mailman/mm_cfg.py
-sed -e 's/.*DEFAULT_SERVER_LANGUAGE.*/DEFAULT_SERVER_LANGUAGE = "fr"/' -i /etc/mailman/mm_cfg.py
+set -e
 
-newlist --quiet mailman tom@tcweb.org password
+if [ ! -d /var/lib/mailman/lists ] 
+then
+  rsync -a --progress /mailman/ /var/lib/mailman/
+fi
+
+NB_LISTS=$(ls /var/lib/mailman/lists | wc -l)
+if [ $NB_LISTS -eq 0 ]
+then 
+  newlist --quiet mailman tom@tcweb.org $MM_PASSWORD
+fi
 
 /etc/init.d/exim4 start
 /etc/init.d/mailman start
