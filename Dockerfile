@@ -9,11 +9,6 @@ run apt-get update \
       rsync \
     && apt-get clean
 
-run apt-get update \
-    && apt-get install -y \
-      vim \
-    && apt-get clean
-
 add vhost.conf /etc/apache2/sites-enabled/mailman.conf
 #run rm /etc/apache2/sites-enabled/000-default.conf
 run a2enmod cgid
