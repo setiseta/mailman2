@@ -16,4 +16,4 @@ fi
 /etc/init.d/mailman start
 /etc/init.d/apache2 start
 
-tail -f /var/log/mailman/* /var/log/exim4/*
+tail -f /var/log/mailman/* /var/log/exim4/mainlog

@@ -97,6 +97,7 @@ MTA='Postfix'
 POSTFIX_ALIAS_CMD = '/bin/true'
 #POSTFIX_MAP_CMD = 'chgrp Debian-exim'
 POSTFIX_MAP_CMD = 'chmod o+r'
+POSTFIX_STYLE_VIRTUAL_DOMAINS = [ 'jdarc.fr' ]
 
 #-------------------------------------------------------------
 # Uncomment if you want to filter mail with SpamAssassin. For
