@@ -12,5 +12,7 @@ run chmod 600 /root/.ssh/authorized_keys
 run mkdir /var/run/sshd && \
     chmod 0755 /var/run/sshd
 
+add create_lists /root/
+run chmod +x /root/*
 
 cmd ["/usr/sbin/sshd", "-D"]
