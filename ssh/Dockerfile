@@ -9,6 +9,8 @@ run sed -e 's/.*PasswordAuthentication.*/PasswordAuthentication no/g' -i /etc/ss
 add change_moderator_pw /usr/lib/mailman/bin/change_moderator_pw
 run chmod +x /usr/lib/mailman/bin/change_moderator_pw
 
+add default.cfg.erb /root/default.cfg.erb
+
 add authorized_keys /root/.ssh/authorized_keys
 run chmod 600 /root/.ssh/authorized_keys
 run mkdir /var/run/sshd && \
