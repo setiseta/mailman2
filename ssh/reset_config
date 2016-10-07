@@ -1,0 +1,22 @@
+#!/bin/bash
+LISTES=listes
+
+for liste in $(cat $LISTES | cut -f 1 -d ' ')
+do
+  CODE=$(egrep "$liste " $LISTES | cut -f 2 -d ' ')
+  PC=$(egrep "^$CODE" jdarc/PC.csv | cut -d ','  -f 3 | sed -e "s/$/'/" -e "s/^/'/" | tr '\n' ','| sed -e "s/,$//")
+  echo $liste $CODE $PC
+  ML_NAME=$liste
+  OWNER='tom@tcweb.org'
+  MODERATOR=$PC
+  DESCRIPTION="Classe $CODE"
+
+  sed -e "s/ML_NAME/$ML_NAME/g" \
+    -e "s/OWNER/$OWNER/g" \
+    -e "s/MODERATOR/$MODERATOR/g" \
+    -e "s/DESCRIPTION/$DESCRIPTION/g" default.cfg.erb > $liste.cfg 
+
+  config_list -i $liste.cfg $liste
+
+  rm $liste.cfg
+done

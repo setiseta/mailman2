@@ -1,0 +1,8 @@
+#!/bin/bash
+for liste in $(list_lists -b | grep -v 'parents$' )
+do
+  COUNT=$(list_members $liste | wc -l)
+  [ $COUNT -gt 0 ] && (list_members $liste | add_members --regular-members-file=- --welcome-msg=n --admin-notify=n parents 2>&1 >/dev/null)
+  [ $? -gt 0 ] && echo "$liste : KO" || echo "$liste : $COUNT"
+done
+

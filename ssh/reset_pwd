@@ -1,0 +1,5 @@
+#!/bin/bash
+for list in $(list_lists -b)
+do 
+  /usr/lib/mailman/bin/change_moderator_pw -l $list
+done

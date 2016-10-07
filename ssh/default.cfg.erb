@@ -1,0 +1,1343 @@
+# -*- python -*-
+# -*- coding: utf8 -*-
+## Paramètres de configuration de la liste "ML_NAME"
+## Capturé le Thu Aug 16 11:32:16 2012
+
+## General options
+#
+# Caractéristiques fondamentales de la liste, infos descriptives et
+# fonctionnement de base.
+
+# La casse du nom peut être changée pour le rendre plus présentable ou
+# en faire un acronyme classique. Toutefois, ce nom sera publié comme
+# étant              l'adresse courriel (dans les requêtes de
+# confirmation d'abonnement par exemple), aussi ne doit-il pas être
+# altéré (les adresses courriels sont insensible à la casse,
+# mais elles le sont à presque n'importe quoi d'autre :-)
+real_name = 'ML_NAME'
+
+# Il y a deux types de responsables pour une liste de diffusion.  Les
+# Administrateurs de listes sont ceux qui disposent d'un contrôle total
+# sur tous les paramètres de cette liste.  Ils peuvent modifier toute
+# variable de liste configurable à travers ces pages web
+# d'administration.
+# 
+# Les Modérateurs de listes ont moins de privilèges; ils ne peuvent pas
+# modifier une variable de configuration de liste, mais peuvent
+# néanmoins basculer vers les requêtes administratives, pour approuver
+# ou rejeter les requêtes d'abonnement, se débarrasser des envois en
+# attente. Les administrateurs de listes peuvent évidemment aussi
+# basculer vers les requêtes en attente.
+# 
+# Pour séparer les tâches relatives à la gestion d'une liste en tâches
+# administratives et tâches de modération, vous devez <a
+# href="passwords">fournir un mot de passe de modération séparé dans le
+# champ ci-dessous, et fournir la <a
+# href="?VARHELP=general/moderator">liste des adresses courriels des
+# modérateurs. Notez que le champ que vous êtes en train de modifier ici
+# contient les administrateurs de la liste.
+owner = ['OWNER']
+
+# Il y a deux types de responsables pour une liste de diffusion.  Les
+# Administrateurs de listes sont ceux qui disposent d'un contrôle total
+# sur tous les paramètres de cette liste.  Ils peuvent Modifier toute
+# variable de liste configurable à travers ces pages web
+# d'administration.
+# 
+# Les Modérateurs de listes ont moins de privilèges; ils ne peuvent pas
+# modifier une variable de configuration de liste, mais peuvent
+# néanmoins basculer vers les requêtes administratives, pour approuver
+# ou rejeter les requêtes d'abonnement, se débarrasser des envois en
+# attente. Les administrateurs de listes peuvent évidemment aussi
+# basculer vers les requêtes en attente.
+# 
+# Pour séparer les tâches relatives à la gestion d'une liste en tâches
+# administratives et tâches de modération, Vous devez <a
+# href="passwords">fournir un mot de passe de modération séparé et
+# fournir la liste des adresses courriels des modérateurs dans cette
+# section. Notez que le champ que vous êtes en train de modifier ici
+# contient les modérateurs de la liste.
+moderator = [MODERATOR]
+
+# Cette description est utilisée lorsque la liste de diffusion est
+# affichée avec d'autres listes, ou dans les en-tête et autres. Elle
+# doit être aussi concise que possible tout en restant explicite.
+description = "DESCRIPTION"
+
+# Le texte sera considéré comme de l'html sauf que les retours à la
+# ligne seront convertis en <br> - vous pouvez donc utiliser des liens,
+# du texte préformatté, etc. Eviter toutefois d'utiliser les retours
+# charriots si vous ne désirez pas créer de nouveaux paragraphes.
+# Vérifier vos modifications - un mauvais code html (comme certaines
+# construction HTML inachevées) peut conduire à une impossibilité
+# d'affichage de la page info liste
+info = ''
+
+# Ce texte sera ajouté aux lignes objets des messages soumis à la liste,
+# pour faciliter la distinction des messages issus des listes de
+# diffusion dans les boîtes de reception. La concision est essentielle
+# ici, il est possible de raccourcir les noms des listes
+# particulièrement longs tant que le resultat demeure explicite. Vous
+# pouvez aussi ajouter un chiffre séquentiel par une commande de
+# substitution %d. e.g ; [nomdeliste %d] -> [nomdeliste 123] (nomdeliste
+# %05d) -> (listname 00123)
+# 
+subject_prefix = '[ML_NAME] '
+
+# Cacher l'expéditeur du message, en le remplaçant par l'adresse de la
+# liste (supprimer les champs From, Sender et Reply-To)
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+anonymous_list = False
+
+# Les en-têtes Reply-To: du message original doivent être supprimés ? Si
+# oui, cela s'appliquera également aux en-têtes Reply-To: ajoutés par
+# Mailman.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+first_strip_reply_to = False
+
+# Cette option contrôle ce que Mailman fait des en-têtes Reply-To: des
+# messages qui arrivent sur cette liste. Quand il a la valeur
+# expéditeur, Mailman n'ajoute pas d'en-tête Reply-To:, et s'il y en a
+# un dans le message original, il n'est pas supprimé. Mettre cette
+# valeur à Cette liste ou a adresse explicite oblige Mailman à insérer
+# un en-tête Reply-To: spécifique à tous les messages, annulant ainsi
+# l'en-tête du message original si nécessaire (l'option adresse
+# explicite insère la valeur de reply_to_address).
+# 
+# Il y a plusieurs raisons qui militent pour ne pas introduire ou ou
+# remplacer l'en-tête Reply-To:. Parmi ces raisons on peut citer le fait
+# que beaucoup d'expéditeurs dépendent de leurs Reply-to: pour
+# réacheminer leurs messages. Une autre raison est le fait que la
+# modification du Reply-To: rend plus difficile les réponses privées.
+# Lire `Reply-To` Munging Considered Harmful pour une discussion
+# générale sur le problème. Lire <a
+# href="http://www.metasystema.org/essays/reply-to.mhtml">Reply-To
+# Munging Considered Useful pour un panorama.
+# 
+# Certaines liste de diffusion ont des possibilités d'envois
+# restreintes, en parallèle avec une liste dédiée aux débats. Parmi ces
+# listes on peut citer les listes 'patches' et 'checkin', où les
+# modifications des logiciels sont soumises par des systèmes de
+# contrôleurs de revisions alors que les discussions concernant ces
+# mêmes modifications se déroulent sur la liste des développeurs. Pour
+# la gestion de ce type de listes, sélectionner adresse explicite et
+# mettre la valeur de l'adresse Reply-To: à celle de la liste parallèle.
+#
+# Les valeurs admises sont :
+#    0 = "Expéditeur"
+#    1 = "Cette liste"
+#    2 = "Adresse explicite"
+reply_goes_to_list = 0
+
+# Cette adresse est celle du champs Reply-To: de l'en-tête lorsque la
+# variable reply_goes_to_list a la valeur adresse explicite
+# 
+# Il y a nombre de raisons qui militent pour la non-annulation ou
+# l'introduction d'un en-tête Reply-to:. Parmi ces raisons on peut citer
+# le fait que pas mal d'expéditeurs dépendent de leurs Reply-to: pour
+# réacheminer leurs messages. Une autre raison est le fait que la
+# modification du Reply-To: rend plus difficile les réponses privées.
+# Lire `Reply-To` Munging Considered Harmful pour une discussion
+# générale sur le problème. Lire <a
+# href="http://www.metasystema.org/essays/reply-to.mhtml">Reply-To
+# Munging Considered Useful pour un panorama.
+# 
+# Certaines liste de diffusion ont des possibilités d'envois
+# restreintes, en parallèle avec une liste dédiée aux débats. Parmi ces
+# listes ont peut citer les listes 'patches' et 'checkin', où les
+# modifications des logiciels sont soumise par des systèmes de
+# contrôleurs de revisions alors que les discussions concernant ces
+# mêmes modifications se déroulent sur la liste des développeurs. Pour
+# la gestion de ce type de listes, sélectionner adresse explicite et
+# mettre la valeur de l'adresse Reply-To: à celle de la liste
+# parallèle.à certains, avec une liste parallèle pour la discussion.
+# Parmi ces listes on peut citer les listes 'patches' et 'checkin', où
+# les modifications des logiciels sont soumis par des systèmes de
+# contrôleurs de revisions alors que les discussions concernant ces
+# mêmes modifications se déroulent sur la liste des développeurs. Pour
+# la gestion de ce type de listes, spécifiez ici l'adresse explicite du
+# Reply-To:. Vous devrez également spécifier l'adresse adresse explicite
+# dans la variable reply_goes_to_list. Notez que si le message original
+# contient un en-tête Reply-To:, il ne sera pas modifé.
+reply_to_address = ''
+
+# Cocher la valeur oui lorsque cette liste à pour unique but de relayer
+# vers d'autres listes. Lorsqu'elle est activée, les metas avis tels que
+# les confirmations et les rappels de mot de passe seront dirigés
+# vers des adresees dérivées de celle des abonnées - Elle aura la valeur
+# de "umbrella_member_suffix" ajoutée au nom de l'abonné.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+umbrella_list = False
+
+# Lorsque "umbrella_list" est activé pour indiquer que d'autres listes
+# sont abonnées à cette liste, les notices administratives telles que
+# les confirmations et les rappels de mot de passe ne doivent pas être
+# envoyés aux adresses des abonnées mais plutôt aux propriétaires des
+# listes. Dans ce cas, la valeur de ce paramètre est ajoutée au nom de
+# compte des abonnés associés à de telles notices. '-owner' est le choix
+# typique. Le paramètrage est sans effet lorsque "umbrella_list" a la
+# valeur "No".
+umbrella_member_suffix = '-owner'
+
+# Activez ceci si vous voulez que les rappels de mot de passe soient
+# envoyés mensuellement à vos abonnés. Il est possible que des abonnés
+# désactivent cette option de leur propre chef.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+send_reminders = 0
+
+# Cette valeur, si elle existe, sera ajoutée au debut du message de
+# bienvenue adressé au nouveaux abonnés. Le reste dudit message décrit
+# les adresses et URLs importantes relatives à la liste de diffusion,
+# par suite, vous n'aurez pas besoin d'ajouter de telles informations
+# ici. Ceci devrait contenir des informations relatives aux objectifs de
+# la liste, tels que les règles éthiques, les orientations de l'équipe,
+# etc. Notez que ce texte sera formatté en utilisant les règles
+# suivantes : Chaque paragraphe est composé de lignes d'au plus 70
+# caractères. Toute ligne commençant par un caractère d'espacement ne
+# sera pas remplie. Les paragraphes sont séparés par une ligne vide.
+# 
+welcome_msg = ''
+
+# Désactiver ceci seulement si vous prévoyez d'abonner manuellement les
+# gens à leur insu. Ceci est utile pour les listes qui effectuent une
+# migration transparente vers Mailman à partir d'autres gestionnaires de
+# liste.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+send_welcome_msg = True
+
+# Le texte envoyé aux personnes quittant la liste. Si ce texte est vide,
+# aucun message spécial ne sera ajouté au texte de résiliation.
+goodbye_msg = ''
+
+# Envoyer un message d'adieu lorsque les membres résilient leur
+# abonnement ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+send_goodbye_msg = True
+
+# Les modérateurs (et les administrateurs) de listes reçoivent
+# quotidiennement le rappel des requêtes d'approbation en attente,
+# telles que les abonnements aux listes modérées ou les envois mis en
+# attente pour diverses raisons. Activer cette option entraîne, en plus,
+# l'envoi d'avis chaque fois qu'une nouvelle requête entre dans la file
+# d'attente.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+admin_immed_notify = True
+
+# L'administrateur doit être informé des abonnements et des résiliations
+# ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+admin_notify_mchanges = 1
+
+# Envoyer un courriel aux expéditeurs lorsque leurs messages sont mis en
+# attente pour approbation ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+respond_to_post_requests = 1
+
+# Lorsque cette option est activée, tout le trafic de la liste est
+# modéré en urgence, i.e mis en attente de modération. A utiliser
+# lorsque les débats sur votre liste s'enflamment !
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+emergency = 0
+
+# Lorsque cette liste accueille un nouvel abonné, ses paramètres
+# initiaux seront extraits de la valeur de cette variable.
+new_member_options = 256
+
+# Les tests administratifs vont vérifier les envois pour voir s'il
+# s'agit de requêtes administratives (telles que les abonnements, les
+# résiliations , etc) et les ajouter à la file d'attente des requêtes
+# puis aviser l'administrateur de l'arrivée de nouvelles requêtes à
+# traiter.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+administrivia = True
+
+# Taille maximale en kilo-octets (ko) du corps d'un message. Spécifiez 0
+# pour illimitée.
+max_message_size = 0
+
+# Maximum number of members to show on one page of the Membership List.
+admin_member_chunksize = 50
+
+# Le "host_name" est le nom préféré pour les courriels relatifs à
+# mailman sur cet hôte Il devra en général être l'adresse du serveur de
+# messagerie, s'il en est. Ce paramètre peut être utilisé pour choisir
+# l'un des noms d'un hôte disposant de plusieurs adresses.
+host_name = 'jdarc.fr'
+
+# La RFC 2369 définit un ensemble d'en-têtes List-* normalement ajoutés
+# à chaque message transmis par la liste à ses abonnés. Cela rend un
+# service considérable aux utilisateurs finaux qui utilisent des
+# lecteurs de courriels respectant les standards. Ces en-têtes doivent
+# être, en principe, toujours activés.
+# 
+# Tous les lecteurs de courriels ne respectent hélas pas les standards,
+# ainsi, si vous avez un grand nombre d'abonnés utilisant de tels
+# lecteurs, il pourraient être ennuyés pas ces en-têtes. Vous devrez
+# commencer par sensibiliser vos abonnés, en leurs expliquant le
+# pourquoi de ces en-têtes et des méthodes éventuelles pour ne pas les
+# faire apparaître avec leurs lecteurs de courriels. Comme dernier
+# recours, vous pourrez désactiver ces en-têtes, mais retenez que cela
+# n'est pas recommandé (qui plus est, cette possibilité pourrait vous
+# être ôtée un jour ou l'autre).
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+include_rfc2369_headers = 1
+
+# L'en-tête List-Post: fait partie des en-têtes recommandés par la
+# RFC2369. Toutefois, pour certaines listes spécialisées pour l'annonce
+# uniquement, seul un nombre restreint d'individus est autorisé à poster
+# sur la liste; les abonnés ordinaires ne sont en général pas autorisés
+# à poster sur la liste. Pour les listes comme celle-là, les en-têtes
+# List-Post: peuvent induire les abonnés en erreur. Choisissez Non pour
+# désactiver l'inclusion de cette en-tête. (Cela n'affectera pas
+# l'inclusion des autres en-têtes List-*:.)
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+include_list_post_header = 1
+
+# Discard held messages older than this number of days. Use 0 for no
+# automatic discarding.
+max_days_to_hold = 0
+
+## Language options
+#
+# Options de langue naturelle (internationalisation)
+
+# Ceci est la langue naturelle par défaut de cette liste de diffusion.
+# Si plusieurs langues sont gérées, alors les utilisateurs pourront
+# choisir leur langue préférée pour les interactions avec la liste.
+# Toutes les autres interaction se feront dans la langue par défaut.
+# Cela s'applique aussi bien aux interfaces web que courriel mais pas
+# aux messages soumis par les abonnés.
+preferred_language = 'fr'
+
+# Ceci est la liste de toute les langues gérées par cette liste. Notez
+# que la langue par défaut doit être présente.
+available_languages = ['fr', 'en']
+
+# Si la langue par défaut de votre liste de diffusion utilise des
+# caractères non ASCII, le préfixe sera toujours encodé en conformité
+# avec le standard approprié. Toutefois, si votre préfixe ne contient
+# que des caractères ASCII, vous devrez choisir Jamais pour désactiver
+# l'encodage du préfixe. Ceci peut rendre l'en-tête objet un peu plus
+# lisible pour les utilisateurs dont le lecteur de courriel ne gère pas
+# correctement les encodages non ASCII.
+# 
+# Notez toutefois que si votre liste reçoit aussi bien des en-têtes
+# objet encodés que non-encodés, vous devrez sélectionner Au besoin.
+# Avec ce paramètrage, Mailman n'encodera pas les préfixes lorsque le
+# reste des en-têtes ne contiennent que des caractères ASCII et il
+# l'encodera lorsque les en-têtes originaux contiennent des caractères
+# non ASCII. Ceci résout une ambiguïté dans les standards qui pourrait
+# faire que certains lecteurs de courriel affiche des extra espaces
+# entre le préfixe et l'en-tête original.
+#
+# Les valeurs admises sont :
+#    0 = "Jamais"
+#    1 = "Toujours"
+#    2 = "Au besoin"
+encode_ascii_prefixes = 2
+
+## Nondigest options
+#
+# Règles concernant le trafic de liste immédiatement délivré.
+
+# Les abonnés ont le droit de choisir de recevoir les courriel
+# immédiatement plutôt que de les avoir par lots ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+nondigestable = True
+
+# Texte ajouté au début de tout message à distribution immédiate.Ce
+# texte peut contenir <a
+# href="http://docs.python.org/library/stdtypes.html#string-formatting-operations">des 
+# formats de cha&icirc;nes Python qui sont remplac&eacute;es par les
+# attributs de la liste.  La liste des substitutions valides est:     
+# 
+# real_name - Le nom usuel de la liste; habituellement le nom en
+# capitales.      
+# 
+# list_name - Le nom par lequel la liste est identifi&eacute;e dans les
+# URLs, o&ugrave; la casse est important. 
+# 
+# 
+# host_name - Le "nom d'h&ocirc;te pleinement qualifi&eacute;" (FQDN) du
+# serveur sur lequel est install&eacute; le serveur de listes.      
+# 
+# web_page_url - L'URL de base pour Mailman. Elle peut &ecirc;tre
+# concat&eacute;n&eacute;e avec, par exemple listinfo/%(list_name)s pour
+# donner la page d'infos de la liste.      
+# 
+# description - La description courte de la liste de diffusion.      
+# 
+# info - La description compl&egrave;te de la liste de diffusion.
+# 
+# cgiext - L'extension ajout&eacute;e aux scripts cgi.    
+#      
+# 
+msg_header = ''
+
+# Texte ajouté au bas de chaque message à distribution immédiate.Ce
+# texte peut contenir <a
+# href="http://docs.python.org/library/stdtypes.html#string-formatting-operations">des 
+# formats de cha&icirc;nes Python qui sont remplac&eacute;es par les
+# attributs de la liste.  La liste des substitutions valides est:     
+# 
+# real_name - Le nom usuel de la liste; habituellement le nom en
+# capitales.      
+# 
+# list_name - Le nom par lequel la liste est identifi&eacute;e dans les
+# URLs, o&ugrave; la casse est important. 
+# 
+# 
+# host_name - Le "nom d'h&ocirc;te pleinement qualifi&eacute;" (FQDN) du
+# serveur sur lequel est install&eacute; le serveur de listes.      
+# 
+# web_page_url - L'URL de base pour Mailman. Elle peut &ecirc;tre
+# concat&eacute;n&eacute;e avec, par exemple listinfo/%(list_name)s pour
+# donner la page d'infos de la liste.      
+# 
+# description - La description courte de la liste de diffusion.      
+# 
+# info - La description compl&egrave;te de la liste de diffusion.
+# 
+# cgiext - L'extension ajout&eacute;e aux scripts cgi.    
+#      
+# 
+msg_footer = """
+Options, désinscription : %(web_page_url)soptions%(cgiext)s/%(_internal_name)s"""
+
+# Lorsque vous nettoyez les pièces attachées, elles sont stockées dans
+# la section archive et des liens sont crées dans les messages pour en
+# permettre l'accès depuis une page web. Si vous désirez voir totalement
+# disparaître les pièces attachées, vous pouvez utiliser les options de
+# filtrage de contenu.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+scrub_nondigest = False
+
+# Les adresses de listes doivent être écrites selon le format général
+# des adresses électroniques (e.g mailman@exemple.com). Ne pas spécifier
+# l'adresse de cette liste en même temps dans la page de configuration
+# d'exclusion de liste  d'une autre liste, sinon les abonnés des deux
+# listes ne recevront plus aucun message. A noter aussi que
+# l'administrateur du site devrait interdire les listes soeurs
+regular_exclude_lists = []
+
+# Les adresses de listes doivent être écrites selon le format général
+# des adresses électroniques (e.g mailman@exemple.com). A noter aussi
+# que l'administrateur du site devrait interdire les listes soeurs
+regular_include_lists = []
+
+## Digest options
+#
+# Caractéristiques de la livraison par lot des envois groupés.
+
+# Les abonnés aux listes peuvent choisir de recevoir le trafic de la
+# liste en mode groupé ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+digestable = True
+
+# Quel est le mode de remise par défaut pour les nouveaux utilisateurs ?
+#
+# Les valeurs admises sont :
+#    0 = "Régulier"
+#    1 = "Remise groupée"
+digest_is_default = False
+
+# Lors de la réception des lots, quel est le format par défaut ?
+#
+# Les valeurs admises sont :
+#    0 = "Brut"
+#    1 = "MIME"
+mime_is_default_digest = False
+
+# Quel doit être la taille minimale en kb d'un lot avant d'être envoyé
+digest_size_threshhold = 30
+
+# Les messages groupés doivent être envoyés si la taille seuil n'est pas
+# atteinte ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+digest_send_periodic = True
+
+# Texte attaché (comme message initial, avant la table des matières) en
+# tête des resumés. Ce texte peut contenir <a
+# href="http://docs.python.org/library/stdtypes.html#string-formatting-operations">des 
+# formats de cha&icirc;nes Python qui sont remplac&eacute;es par les
+# attributs de la liste.  La liste des substitutions valides est:     
+# 
+# real_name - Le nom usuel de la liste; habituellement le nom en
+# capitales.      
+# 
+# list_name - Le nom par lequel la liste est identifi&eacute;e dans les
+# URLs, o&ugrave; la casse est important. 
+# 
+# 
+# host_name - Le "nom d'h&ocirc;te pleinement qualifi&eacute;" (FQDN) du
+# serveur sur lequel est install&eacute; le serveur de listes.      
+# 
+# web_page_url - L'URL de base pour Mailman. Elle peut &ecirc;tre
+# concat&eacute;n&eacute;e avec, par exemple listinfo/%(list_name)s pour
+# donner la page d'infos de la liste.      
+# 
+# description - La description courte de la liste de diffusion.      
+# 
+# info - La description compl&egrave;te de la liste de diffusion.
+# 
+# cgiext - L'extension ajout&eacute;e aux scripts cgi.    
+#      
+# 
+digest_header = ''
+
+# Texte attaché (comme message final) au bas de chaque lot. Ce texte
+# peut contenir <a
+# href="http://docs.python.org/library/stdtypes.html#string-formatting-operations">des 
+# formats de cha&icirc;nes Python qui sont remplac&eacute;es par les
+# attributs de la liste.  La liste des substitutions valides est:     
+# 
+# real_name - Le nom usuel de la liste; habituellement le nom en
+# capitales.      
+# 
+# list_name - Le nom par lequel la liste est identifi&eacute;e dans les
+# URLs, o&ugrave; la casse est important. 
+# 
+# 
+# host_name - Le "nom d'h&ocirc;te pleinement qualifi&eacute;" (FQDN) du
+# serveur sur lequel est install&eacute; le serveur de listes.      
+# 
+# web_page_url - L'URL de base pour Mailman. Elle peut &ecirc;tre
+# concat&eacute;n&eacute;e avec, par exemple listinfo/%(list_name)s pour
+# donner la page d'infos de la liste.      
+# 
+# description - La description courte de la liste de diffusion.      
+# 
+# info - La description compl&egrave;te de la liste de diffusion.
+# 
+# cgiext - L'extension ajout&eacute;e aux scripts cgi.    
+#      
+# 
+digest_footer = """_______________________________________________
+%(real_name)s mailing list
+%(real_name)s@%(host_name)s
+%(web_page_url)slistinfo%(cgiext)s/%(_internal_name)s"""
+
+# Lorsqu'un nouveau volume resumé est crée, le numéro du volume est
+# incrementé alors que celui de la parution est ramené à 1
+#
+# Les valeurs admises sont :
+#    0 = "Annuel"
+#    1 = "Mensuel"
+#    2 = "Trimestriel"
+#    3 = "Hebdomadaire"
+#    4 = "Quotidien"
+digest_volume_frequency = 1
+
+## Privacy options
+#
+# Cette section vous permet de configurer les règles d'abonnement et de
+# protection des abonnés. Vous pourrez également contrôler le caractère
+# publique ou non de cette liste.  Voir également la section <a
+# href="http://ml.jdarc.fr/mailman/admin/ML_NAME/archive">Options
+# d'Archivage</a> pour d'autres options de confidentialité relatives à
+# l'archivage.
+
+# Afficher cette liste lorqu'on demande les listes hébergées par cette
+# machine ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+advertised = 1
+
+# Confirmer (*) - confirmation courriel requise Nécessite l'approbation
+# - nécessite l'approbation de l'administrateur de la liste pour
+# l'abonnement Confirmer et approuver - confirmation et approbation
+# 
+# (*) lorsqu'un abonnement est demandé, Mailman envoie en retour un avis
+# avec un numéro unique de demande d'abonnement, message pour lequel une
+# réponse est attendue pour que l'inscription soit validée. Ceci empêche
+# les personnes malveillantes d'abonner des personnes à leur insu.
+#
+# Les valeurs admises sont :
+#    1 = "Confirmer"
+#    2 = "Nécessite une approbation"
+#    3 = "Confirmer et approuver"
+subscribe_policy = 3
+
+# Lorsque les abonnés veulent quitter une liste, ils font une demande de
+# résiliation, soit par l'interface web, soir par l'interface courriel.
+# En principe, il est préférable pour votre confort de permettre les
+# demandes automatiques de résiliation, ainsi les utilisateurs peuvent
+# quitter votre liste sans difficultés (ils sont vraiment contrariés
+# lorsqu'ils ne peuvent pas quitter une liste !).
+# 
+# Pour certaines listes vous pourrez désirer l'approbation d'un
+# modérateur avant qu'une demande de résiliation ne soit traitée. Parmi
+# de telles listes on peut citer les listes d'entreprises dans
+# lesquelles tous les employés doivent être abonnés.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+unsubscribe_policy = 0
+
+# Les adresses contenues dans cette liste sont interdites d'abonnement
+# sans autre forme de procès. Ajouter les adresses, une par ligne;
+# commencer la ligne avec le caractère ^ pour désigner une comparaison
+# avec une expression régulière.
+ban_list = []
+
+# Lorsqu'il est défini, l'affichage de la liste des abonnés requiert la
+# fourniture du mot de passe administrateur ou abonné.
+#
+# Les valeurs admises sont :
+#    0 = "N'importe qui"
+#    1 = "Abonnés de la liste"
+#    2 = "Uniquement l'administrateur"
+private_roster = 2
+
+# L'activation de cette option a pour effet de transformer les adresses
+# des abonnés avant leur affichage dans les pages web (aussi bien comme
+# texte que comme liens), ainsi, elles ne seront pas reconnues de façon
+# triviale comme des adresses courriels valides. Le but de la manoeuvre
+# est d'empêcher que les scanners web automatiques s'en emparent pour
+# l'usage des spammers.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+obscure_addresses = 1
+
+## Privacy options
+#
+# Lorsqu'un message est posté sur la liste, un ensemble de règles est
+# utilisé pour décider si le message doit d'abord être approuvé par le
+# modérateur ou non. Cette section contient les contrôles pour la
+# modération des messages reçus des abonnés et des non-abonnés.
+# 
+# <p>Les envois des abonnés sont mis en attente de modération si leur
+# <b>indicateur de modération</b> est activé. Vous pouvez décider du
+# sort réservé par défaut aux envois des abonnés.
+# 
+# <p>Les envois des non-abonnés peuvent être automatiquement <a
+# href="?VARHELP=privacy/sender/accept_these_nonmembers">acceptés</a>,
+# <a href="?VARHELP=privacy/sender/hold_these_nonmembers">mis en attente
+# pour modération, <a
+# href="?VARHELP=privacy/sender/reject_these_nonmembers">rejetés</a>
+# (rebonds) ou <a
+# href="?VARHELP=privacy/sender/discard_these_nonmembers">supprimés</a>
+# soit individuellement, soit par groupe. Tout message en provenance
+# d'un non-abonné non explicitement accepté, rejeté ou supprimé devra
+# subir les filtres définis par les <a
+# href="?VARHELP=privacy/sender/generic_nonmember_action">règles
+# générales des non-abonnés</a>.
+# 
+# <p>Dans la zone de texte ci-dessous, ajouter une adresse par ligne;
+# commencer la ligne avec le caractère ^ pour designer une <a
+# href="http://docs.python.org/library/re.html">expression régulière
+# Python</a>. Si vous utilisez des backslashs, faites-le comme si vous
+# utilisiez des chaînes Python brutes (i.e. en utilisant un seul
+# backslash).
+# 
+# <p>Notez que les comparaison non-regexp sont prioritaires.
+
+# Chaque abonné possède un indicateur de modération qui précise si les
+# messages soumis par l'abonné doivent être directement remis à la liste
+# ou si ils doivent être soumis à l'approbation d'un modérateur de
+# liste. Lorsque cet indicateur est activé, les envois de l'abonné
+# doivent être approuvés avant d'être distribués. En tant
+# qu'administrateur, vous pouvez décider du sort des messages d'un
+# abonné.
+# 
+# Pour un nouvel abonné, l'indicateur de modération correspond à la
+# valeur que vous précisez ici. Désactivez cette option pour permettre
+# les envois sans modération par défaut. Activez cette option pour que
+# le comportement par défaut soit la modération des messages. Vous
+# pourrez toujours changer l'indicateur de modération d'un abonné en
+# utilisant la fenêtre de gestion des abonnements.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+default_member_moderation = 0
+
+# En attente -- Le message est mis en attente d'approbation par le
+# modérateur de la liste.
+# 
+# Rejeter -- Rejetter automatiquement le message en envoyant un avis de
+# retour à l'auteur de la soumission. <a
+# href="?VARHELP=privacy/sender/member_moderation_notice">Vous pouvez
+# configurer le texte de l'avis de retour.
+# 
+# Supprimer -- Supprimer tout simplement le message sans rien envoyer en
+# retour à son auteur.
+# 
+# 
+#
+# Les valeurs admises sont :
+#    0 = "En attente"
+#    1 = "Rejeter"
+#    2 = "Supprimer"
+member_moderation_action = 0
+
+# Texte à inclure dans les <a
+# href="?VARHELP/privacy/sender/member_moderation_action">avis de rejet
+# à envoyer aux abonnés sous modération ayant soumis un message à la
+# liste.
+member_moderation_notice = ''
+
+# Tous les envois provenant de ces non-abonnés seront automatiquement
+# acceptés sans autre forme de procès. Ajouter les adresses des
+# abonnés, une par ligne; commencez la ligne avec le caractère ^ pour
+# désigner une expression régulière. Une ligne formée du caractère @
+# suivi par un nom de liste fait référence à une autre liste Mailman de
+# cette installation dont toutes les adresses des abonnés seront
+# acceptées sur cette liste.
+accept_these_nonmembers = []
+
+# Tous les envois provenant de ces non-abonnés seront immédiatement mis
+# en attente de modération par les modérateurs de la liste. L'expéditeur
+# recevra un message lui permettant d'annuler le message mis en attente.
+# Ajouter les adresses des abonnés, une par ligne; commencez la ligne
+# avec le caractère ^ pour désigner une expression régulière.
+hold_these_nonmembers = []
+
+# Tous les envois provenant de ces non-abonnés seront automatiquement
+# rejetés. Autrement dit, les messages seront retournés avec un avis de
+# rejet automatique. Cette option n'est pas appropriée pour les spammers
+# connus; leurs messages doivent être <a
+# href="?VARHELP=privacy/sender/discard_these_nonmembers">automatiquement 
+# ignorés.
+# 
+# Ajouter les adresses des abonnés, une par ligne; commencez la ligne
+# avec le caractère ^ pour désigner une expression régulière.
+reject_these_nonmembers = []
+
+# Tous les messages provenant de ces non-abonnés seront automatiquement
+# ignorés. Autrement dit, les messages seront jetés sans autre forme de
+# procès. L'expéditeur ne recevra aucun avis; toutefois l'administrateur
+# pourra, s'il le désire, <a
+# href="?VARHELP=privacy/sender/forward_auto_discards">recevoir des
+# copies de ces messages.<
+# 
+# Ajouter les adresses des abonnés, une par ligne; commencez la ligne
+# avec le caractère ^ pour désigner une expression régulière.
+discard_these_nonmembers = []
+
+# Lorsqu'un message est reçu d'un non-abonné, l'adresse de l'expéditeur
+# est comparée aux adresses <a
+# href="?VARHELP=privacy/sender/accept_these_nonmembers">acceptées, mise
+# en attente <a
+# href="?VARHELP=privacy/sender/reject_these_nonmembers">rejetées
+# (rejet) et <a href="?VARHELP=privacy/sender/discard_these_nonmembers"
+# >supprimées. Si aucune adresse ne correspond, cette mesure est prise.
+#
+# Les valeurs admises sont :
+#    0 = "Accepter"
+#    1 = "En attente"
+#    2 = "Rejeter"
+#    3 = "Supprimer"
+generic_nonmember_action = 1
+
+# Les messages des non-abonnés automatiquement ignorés doivent être
+# transmis au modérateur de la liste ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+forward_auto_discards = 1
+
+# Texte à inclure dans chaque avis de rejet à envoyer aux non-abonnés
+# qui postent sur la liste. Cet avis peut inclure l'adresse du
+# propriétaire de la liste avec %(listowner)s et remplacer le message
+# interne par défaut.
+nonmember_rejection_notice = ''
+
+## Privacy options
+#
+# Cette section vous permet de configurer divers filtres basés sur le
+# destinataire du message.
+
+# Nombre (en fait, la plupart) de spams ne précisent pas nommément leur
+# pléthore de destinations dans l'adresse de destination - en fait le
+# champ A: contient souvent une adresse complétement falacieuse La
+# contrainte s'applique uniquement au texte précédent le @, mais il
+# intercepte toutefois tous ces types de spams.
+# 
+# Le coût associé est que la liste n'acceptera pas les soumissions
+# relayées à partir d'autres adresse, sauf si
+# 
+# L'adresse de relais à le même nom, ou Le nom de l'adresse de relais
+# est l'une des adresses admises comme alias valable pour la liste.
+# 
+# 
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+require_explicit_destination = True
+
+# Adresses acceptables lorsque l'option 'require_explicit_destination'
+# est active Cette option prend une liste d'expressions régulières, une
+# par ligne, comparées avec chaque adresse destinataire dans le message.
+# La comparaison est effectuée avec la fonction Python re.match(),
+# impliquant un attachement au début de la chaîne.
+# 
+# Pour une compatibilité ascendante avec Mailman 1.1, si l'expression
+# regulière ne contient pas un '@', alors le motif est comparé à la
+# partie locale de l'adresse du destinataire. Si cette comparaison
+# échoue ou si le motif contient un '@', alors le motif est comparé à la
+# totalité de l'adresse du destinataire.
+# 
+# La comparaison avec la partie locale est obsolète; pour les
+# publications à venir, le motif sera toujours comparé à la totalité de
+# l'adresse du destinataire.
+acceptable_aliases = ''
+
+# Si un envoi est destiné à au moins autant de destinataires que
+# précisé, il est mis en attente d'approbation de l'administrateur.
+# Utilisez 0 pour lever cette limite.
+max_num_recipients = 10
+
+## Privacy options
+#
+# Cette section vous permet de configurer les divers filtres anti-spam,
+# ce qui permet de réduire les spams que vos abonnés reçoivent.
+
+# Chaque règle de filtrage d'en-tête est composée de deux parties, une
+# liste d' expressions régulières, une par ligne, et une action à mener.
+# Mailman compare les en-têtes de messages à chaque expression régulière
+# de la règle et en cas de correspondance, le message est rejeté, mis en
+# attente ou supprimé suivant l'action spécifiée. Utiliser Différer pour
+# désactiver temporairement la règle.
+# 
+# Vous pouvez avoir plus d'une règle de filtrage pour votre liste. Dans
+# ce cas, chaque règle est évaluée tour à tour, le processus
+# s'interrompant après la première correspondance. A noter que les
+# en-têtes sont collectés à partir de toutes les pièces attachées
+# (excepté pour les messages administratifs) et comparés aux expressions
+# régulières. Avec cette méthode, il est possible de trier réellement
+# les messages contenant des pièces attachées dangereuses.
+header_filter_rules = []
+
+# Utilisez cette option pour interdire les envois en fonction d'en-tête
+# spécifiques. La cible est une expression regulière à comparer avec
+# l'en-             tête spécifié. La comparaison est faite en ignorant
+# la casse des caractères. Les lignes commençant par '#' sont
+# considérées comme des commentaires et ignorées.
+# 
+# par exemple :to: .*@public.com  ordonne la mise en attente de tous les
+# envois avec un champs A: contenant '@public.com' partout dans les
+# adresses. 
+# 
+# Notez que les espaces précédents l'expression regulière sont
+# supprimés. Cela peut être évité de plusieurs façons, e.g. en utilisant
+# des séquences d'échappement ou en les mettant entre guillemets.
+bounce_matching_headers = """
+# Lines that *start* with a '#' are comments.
+to: friend@public.com
+message-id: relay.comanche.denmark.eu
+from: list@listme.com
+from: .*@uplinkpro.com"""
+
+## Bounce options
+#
+# Ces règles contrôlent le système de gestion automatique des rejets
+# sous Mailman. Nous allons décrire sommairement son fonctionnement.
+# 
+# <p>Lorsqu'un rejet est reçu, Mailman essaie d'extraire deux
+# informations du message : l'adresse de l'abonné à qui le message était
+# destiné et la sévérité du problème ayant causé le rejet. La sévérité
+# peut être <em>forte</em> ou <em>légère</em> signifiant qu'une erreur
+# fatale est survenue ou que l'erreur est passagère. En cas de doute, la
+# sévérité est supposée forte.
+# 
+# <p>Si une adresse d'abonné ne peut être extraite du rejet, alors il
+# est généralement ignoré, sinon, chaque abonné dispose d'un <em>score
+# de rejet</em> qui est incrémenté chaque fois que son adresse en fait
+# l'objet. Les rejets forts font l'objet d'une incrémentation de 1
+# contre 0,5 pour les rejets légers. Le score de rejet n'est incrémenté
+# qu'une fois par jour, ainsi, même si dix rejets forts sont reçus pour
+# un abonné, son compteur n'est incrémenté de 1 pour la journée.
+# 
+# <p>Lorsque le score de rejet d'un abonné est supérieur à <a
+# href="?VARHELP=bounce/bounce_score_threshold">la limite du record de
+# rejets</a>, son abonnement est désactivé. Une fois désactivé, l'abonné
+# ne recevra plus d'envois en provenance de la liste jusqu'à ce que son
+# abonnement soit explicitement réactivé (soit par l'administrateur de
+# la liste, soit par l'abonné). Il recevra toutefois des rappels
+# occasionnels lui faisant part de l'état de son abonnement, rappels qui
+# contiendront des informations concernant les mesures à prendre pour
+# réactiver son abonnement.
+# 
+# <p>Vous avez un contrôle total sur <a
+# href="?VARHELP=bounce/bounce_you_are_disabled_warnings">le nombre de
+# rappels</a> reçus par l'abonné et sur la <a
+# href="?VARHELP=bounce/bounce_you_are_disabled_warnings_interval
+# ">périodicité</a> avec laquelle ces rappels sont envoyés.
+# 
+# <p>Il y a une autre variable de configuration importante; après une
+# certaine période -- durant laquelle aucun rejet provenant de l'abonné
+# n'est reçu -- les informations de rejets sont <a
+# href="?VARHELP=bounce/bounce_info_stale_after">considérées comme
+# caduques</a> et ignorées. Ainsi, si vous ajustez ce paramètre et la
+# limite du score, vous pourrez contrôler la rapidité avec laquelle les
+# abonnés à rejet sont désactivés. Ces deux paramètres doivent être
+# adaptés à la taille et au volume du trafic de votre liste.
+
+# Si vous choisissez Non pour cette valeur, vous désactivez la gestion
+# automatique des rejets pour cette liste, les messages qui rebondissent
+# seront toutefois ignorés évitant ainsi que l'administrateur en soit
+# inondé.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+bounce_processing = True
+
+# A chaque inscrit est assigné un score de rejets, un nombre à virgule
+# flottante. Lorsque Mailman reçoit un rejet d'un abonné le score de ce
+# membre est incrémenté. Les rejets forts (erreurs fatales) augmente le
+# score de 1, alors que les rejets légers ne l'augmentent que de 0,5.
+# Seul un rejet par jour est pris en compte, ainsi si 10 rejets dans une
+# même journée sont reçus d'un inscrit, le score ne sera incrémenté que
+# de 1.
+# 
+# Cette variable décrit la valeur limite supérieure pour le score de
+# rejet d'un abonné, valeur pour laquelle, en cas de dépassement, ils
+# seront automatiquement désactivés, mais pas désinscrits de la liste.
+bounce_score_threshold = 5.0
+
+# Le nombre de jours au-delà duquel les informations de rejets d'un
+# abonné deviennent caduques si de nouveaux rejets ne proviennent pas de
+# son adresse entre temps. Cette valeur doit être un entier.
+bounce_info_stale_after = 7
+
+# Combien de messages d'avertissement de type Votre abonnement est
+# désactivé un abonné dont le compte a été désactivé doit-il recevoir
+# avant que son adresse ne soit supprimée de la liste. Spécifier 0 pour
+# supprimer immédiatement l'adresse dès que la limite du score de rejet
+# est atteinte. Cette valeur doit être un entier.
+bounce_you_are_disabled_warnings = 3
+
+# Le nombre de jours entre les messages de type Votre abonnement est
+# désactivé. Cette valeur doit être un entier.
+bounce_you_are_disabled_warnings_interval = 7
+
+# Bien que le gestionnaire de rejets de Mailman soit assez robuste, il
+# est impossible de détecter tous les formats possibles de rejets. Vous
+# devrez porter cette variable à Oui pour deux raisons: 1) S'il s'agit
+# de rejets définitifs en provenance de l'adresse de l'un de vos
+# abonnés, vous devriez certainement le supprimer manuellement de la
+# liste, et, 2) Vous serez aimable d'envoyer ce message sur la liste des
+# développeurs de Mailman pour que ce nouveau format soit incorporé à
+# l'ensemble des formats connus.
+# 
+# Si vous n'avez pas envie d'être dérangé, portez cette variable à Non
+# de sorte que tous les rejets non décelés soient ignorés sans autre
+# forme de procès.
+# 
+# Note : Ce paramètrage affectera également tous les messages envoyés à
+# l'adresse -admin de votre liste. Cette adresse est obsolète est ne
+# devrait plus être utilisée, mais certaines personnes vont y envoyer
+# des messages. Si cela arrive et que la valeur de cette variable est
+# Non, alors ces messages aussi seront ignorés. Vous pourrez configurer
+# <a href="?VARHELP=autoreply/autoresponse_admin_text">un message d'auto
+# réponse pour les messages destinés aux adresses -owner et -admin.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+bounce_unrecognized_goes_to_list_owner = True
+
+# En portant cette valeur à Non, vous désactivez les avis envoyés
+# normalement aux propriétaires de la liste lorsque la remise est
+# désactivée pour un abonné suite à des rejets excessifs. Mailman
+# tentera également de tenir l'abonné informé.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+bounce_notify_owner_on_disable = True
+
+# En portant cette valeur à Non, vous désactivez l'envoi d'avis
+# normalement destinés aux propriétaires de la liste lorsqu'un
+# abonnement est supprimé suite à des rejets excessifs. Mailman tentera
+# de tenir l'abonné informé.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+bounce_notify_owner_on_removal = True
+
+## Archive options
+#
+# Règles d'archivage du trafic sur la liste.
+
+# Messages archivés ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+archive = True
+
+# Le fichier source des archives est destiné à un archivage public ou
+# privé ?
+#
+# Les valeurs admises sont :
+#    0 = "public"
+#    1 = "privé"
+archive_private = 1
+
+# Avec quelle périodicité de nouveaux volumes d'archives doivent-ils
+# être crées ?
+#
+# Les valeurs admises sont :
+#    0 = "Annuel"
+#    1 = "Mensuel"
+#    2 = "Trimestriel"
+#    3 = "Hebdomadaire"
+#    4 = "Quotidien"
+archive_volume_frequency = 1
+
+## Gateway options
+#
+# Services passerelles Courriel-vers-News et News-vers-Courriel
+
+# Cette valeur peut être soit le nom de votre serveur de news, soit le
+# format nom:port, où port est un numéro de port. Le serveur de News ne
+# fait pas partie intégrante de Mailman. Vous devez déjà disposer d'un
+# accès à un serveur NNTP qui reconnait la machine sur laquelle tourne
+# cette liste de diffusion comme étant capable de lire et de publier des
+# news.
+nntp_host = ''
+
+# Le nom du groupe Usenet pour lequel ce site sert de passerelle.
+linked_newsgroup = ''
+
+# Les nouveaux envois à la liste de diffusion doivent être envoyés au
+# groupe de news ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+gateway_to_news = 0
+
+# les nouveaux envois au groupe de news doivent être également envoyés à
+# la liste ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+gateway_to_mail = 0
+
+# Ces réglages déterminent les règles de modération du newsgroup et les
+# interactions avec les règles de modération de la liste de diffusion.
+# Ceci ne s'applique qu'au newsgroup pour lequel ce site sert de
+# passerelle, si vous ne faites que relayer Usenet, ou si le newsgroup
+# considéré n'est pas modéré, mettre cette option à Aucun.
+# 
+# Si le newsgroup est modéré, vous pouvez faire en sorte que la liste de
+# diffsion soit l'adresse de modération du newsgroup. En sélectionnant
+# Modéré, une étape supplémentaire entre dans le processus
+# d'approbation. Tous les messages postés sur la liste de diffusion
+# nécessiteront une approbation avant diffusion au newsgroup, ou aux
+# membres de la liste.
+# 
+# Notez que si ce message possède un en-tête Approuvé contenant le mot
+# de passe administrateur, ce test ne s'appliquera pas, permettant ainsi
+# aux expéditeurs dotés de privilèges d'envoyer des messages directement
+# à la liste et au newsgroup.
+# 
+# Enfin, si le newsgroup est modéré, mais que vous désirez quand même
+# des règles de postage libres, vous devez sélectionner Liste ouverte,
+# groupe modéré, ce qui a pour effet d'utiliser les règles habituelles
+# de modération de Mailman, mais en ajoutant un en-             tête
+# Approuvé à tous les messages relayés vers Usenet.
+#
+# Les valeurs admises sont :
+#    0 = "Aucun"
+#    1 = "Liste ouverte, groupe modéré"
+#    2 = "Modéré"
+news_moderation = 0
+
+# Mailman préfixe les en-têtes Objet: avec <a
+# href="?VARHELP=general/subject_prefix">un texte que vous pouvez
+# personnaliser et en principe, ce préfixe apparaît dans les messages
+# transmis aux groupes de news. Vous pouvez mettre ce paramètre à Non
+# pour désactiver les préfixes sur les messages transmis. Si vous
+# désactiver les préfixes Objet: normaux, la même règle va évidemment
+# s'appliquer aux messages transmis.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+news_prefix_subject_too = 1
+
+## Autoreply options
+#
+# Caractéristique du répondeur automatique.<p>
+# 
+# Dans les zones de texte ci-dessous, des interpolations de chaînes sont
+# opérées avec les substitutions clé/valeur suivantes : <p><ul>
+# <li><b>listname</b> - <em>donne le nom de la liste</em>
+# <li><b>listurl</b> - <em>donne l'URL de la page info de la liste</em>
+# <li><b>requestemail</b> - <em>donne l'adresse -request de la
+# liste</em> <li><b>owneremail</b> - <em>donne l'adresse -owner de la
+# liste</em> </ul>
+# 
+# <p>Pour chaque zone de texte, vous pourrez ou saisir le texte
+# directement dans la zone de texte, ou spécifier un fichier à charger
+# en provenance de votre système de fichier local contenant le texte
+# correspondant.
+
+# Mailman doit envoyer une réponse automatique aux expéditeurs ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+autorespond_postings = 0
+
+# Texte d'autoréponse envoyé aux expéditeurs de la liste.
+autoresponse_postings_text = ''
+
+# Mailman devra-il envoyer une réponse automatique aux courriels envoyés
+# à l'adresse -owner ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+autorespond_admin = 0
+
+# Texte du répondeur automatique à envoyer aux adresses -owner.
+autoresponse_admin_text = ''
+
+# Mailman doit envoyer une réponse automatique suite aux messages
+# envoyés à l'adresse -request ? Si vous répondez oui, vous devez
+# spécifier si Mailman doit ignorer le message original ou si il doit le
+# faire parvenir au système comme une commande de courriel classique.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui, puis supprimer"
+#    2 = "Oui, puis faire suivre"
+autorespond_requests = 0
+
+# Texte de répondeur automatique à envoyer à l'adresse -request
+autoresponse_request_text = ''
+
+# Nombre de jours séparant les réponses automatiques vers la liste ou
+# vers les adresses -request/-owner déclenchées par le même expéditeur.
+# Mettre la valeur à zéro (ou à une valeur négative) pour annuler les
+# périodes de grâce (i.e. une réponse automatique à tous les messages).
+autoresponse_graceperiod = 90
+
+## Contentfilter options
+#
+# Règles concernant le contenu du trafic de la liste. <p>Le filtrage du
+# contenu fonctionne de la manière suivante : lorsqu'un message est reçu
+# sur la liste et que le filtrage de contenu est actif, les sections
+# individuelles sont d'abord comparées aux <a
+# href="?VARHELP=contentfilter/filter_mime_types">types de filtres</a>.
+# Si le type de section correspond à une valeur du filtre, elle est
+# supprimée.
+# 
+# <p>Ensuite, si il y a des <a
+# href="?VARHELP=contentfilter/pass_mime_types">types acceptés</a>
+# définis, tout type de section qui ne correspond <em>pas</em> à un type
+# accepté est aussi supprimé. Si il n'y a pas de type accepté définis,
+# ce contrôle n'est pas effectué.
+# 
+# <p>Après ce filtrage initial, toute section <tt>multipart</tt> vide
+# est supprimée. Si le message sortant est vide après cette étape de
+# filtrage, alors le message en entier est supprimé. Puis chaque section
+# <tt>multipart/alternative</tt> sera remplacée par la première section
+# alternative non vide après filtrage si <a
+# href="?VARHELP=contentfilter/collapse_alternatives"
+# >collapse_alternatives</a> est activée.
+# 
+# Enfin, toute partie <tt>text/html</tt> laissée dans le message est
+# convertie en <tt>text/plain</tt> si <a
+# href="?VARHELP=contentfilter/convert_html_to_plaintext"
+# >convertir_html_en_textebrut</a> est actif et que le site est
+# configuré pour autoriser ces conversions.
+
+# Mailman doit-il filtrer le contenu du trafic de la liste conformément
+# aux paramètres ci-dessous ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+filter_content = False
+
+# Utiliser cette option pour supprimer toute section attachée qui
+# correspond à un des types de contenu. Chaque ligne devrait contenir
+# une chaîne désignant un type/sous-type MIME, e.g image/gif. Laisser le
+# sous-type vide pour supprimer toutes les sections contenant un type
+# majeur, e.g image.
+# 
+# Les lignes vides sont ignorées.
+# 
+# Voir aussi <a href="?VARHELP=contentfilter/pass_mime_types"
+# >types_mime_acceptés pour la liste des types de contenu.
+filter_mime_types = ''
+
+# Utiliser cette option pour supprimer toute section attachée qui ne
+# correspond pas à un type de contenu. Formats et éléments requis sont
+# exactement les mêmes que pour <a
+# href="?VARHELP=contentfilter/filter_mime_types" >types_filtres_mime.
+# 
+# Note : si vous ajoutez des valeurs à cette liste sans ajouter
+# multipart, tout message avec attachements sera rejeté par le filtre.
+pass_mime_types = """multipart/mixed
+multipart/alternative
+text/plain"""
+
+# Supprimer les sections attachées correspondant à une extension de
+# fichier.
+filter_filename_extensions = """exe
+bat
+cmd
+com
+pif
+scr
+vbs
+cpl"""
+
+# Supprimer les sections attachées qui ne correspondent pas à une
+# extension de fichier. Laisser le champs vide pour passer ce test.
+pass_filename_extensions = ''
+
+# Mailman doit-il revenir au contenu de la première partie ?
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+collapse_alternatives = True
+
+# Mailman doit-il convertir les parties text/html en texte brut ? Cette
+# conversion survient après la suppression des fichiers attachés MIME.
+#
+# Les valeurs admises sont :
+#    0 = "Non"
+#    1 = "Oui"
+convert_html_to_plaintext = True
+
+# Une de ces mesures est prise lorsque le message correspond à une des
+# règles de filtrage de contenu, c'est à dire que le type de contenu
+# correspond à <a href="?VARHELP=contentfilter/filter_mime_types"
+# >types_filtres_mime, ou ne correspond pas à <a href="?
+# VARHELP=contentfilter/pass_mime_types" >types_mime_acceptés, ou alors
+# si après filtrage des sections du message, ce dernier est vide.
+# 
+# Lorsque les messages sont supprimés, une entrée log est crée,
+# contenant l'ID des messages supprimés. Lorsque les messages sont
+# rejetés ou remis au propriétaire de liste, une raison du rejet est
+# incluse dans le message de retour à l'expéditeur. Lorsque les messages
+# sont préservés, ils sont sauvés dans un dossier file d'attente du
+# disque pour que l'administrateur puisse les voir (et les récupérer
+# éventuellement) ou les supprimer. Cette dernière option n'est
+# disponible qu'après activation par l'administrateur du site.
+#
+# Les valeurs admises sont :
+#    0 = "Supprimer"
+#    1 = "Rejeter"
+#    2 = "Faire suivre au propriétaire de la liste"
+#    3 = "Préserver"
+filter_action = 0
+
+## Topics options
+#
+# Mots clés du thème de la liste
+
+# Le filtre de thème place chaque courriel qui arrive dans une catégorie
+# sur la base <a href="http://docs.python.org/library/re.html"> des
+# filtres d'expressions régulières que vous avez définis ci-dessous. Si
+# l'en-tête Objet: ou Mots Clés: correspond à un thème, alors le message
+# est logiquement placé dans un compartiment de thème. Dès lors, chaque
+# utilisateur peut choisir de              ne recevoir de la liste que
+# des messages d'un compartiment(s) de thème              particulier.
+# Tout message qui n'entre pas dans une catégorie de compartiment de
+# thème              déclaré par l'utilisateur ne sera pas remis à la
+# liste.
+# 
+# Notez que cette fonctionnalité n'est active qu'en mode de remise
+# normale et est sans effet pour les remises groupées.
+# 
+# Le corps du message pourrait accessoirement être analysé à la
+# recherche d'en-têtes Objet: et Mot Clé: en conformité avec la variable
+# de configuration
+# 
+# topics_bodylines_limit.
+#
+# Les valeurs admises sont :
+#    0 = "Désactivé"
+#    1 = "Activé"
+topics_enabled = 0
+
+# Le moteur de thème va analyser un nombre de lignes égal à celui-ci
+# dans le corps du message à la recherche d'une correspondance du thème.
+# Cette opération s'arrête lorsque le nombre de ligne cité est couvert à
+# moins qu'une ligne qui ne ressemblerait pas à un corps de message ne
+# soit rencontrée. En affectant la valeur 0, le corps du message ne sera
+# pas analysé (i.e. que seuls les en-têtes Objet: et Mots Clés: seront
+# analysés). Si la valeur est négative alors toutes les lignes du corps
+# seront analysées jusqu'à ce qu'une ligne ne ressemblant pas à un
+# en-tête soit rencontrée
+# 
+topics_bodylines_limit = 5
+
+# Chaque mot clé pour un thème est actuellement une expression régulière
+# comparée à certaines parties du courriel, les en-têtes Mots Clés:
+#  et Objet: en particulier. Notez que les premières
+# lignes du corps du message peuvent contenir les "en-têtes" Mots Clés:
+# et Objet: sur lesquelles la comparaison se fera.
+topics = []
+

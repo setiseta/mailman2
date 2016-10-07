@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function init {
+	COUNT=$(egrep -c "^$1" jdarc/parents.csv)
+	if [ $COUNT -gt 0 ]
+	then
+		egrep "^$1" jdarc/parents.csv | cut -d "," -f 5,7 | tr ',' "\n" | tr 'é' 'e' | tr 'è' 'e' | add_members --regular-members-file=- --welcome-msg=n --admin-notify=n $2
+	else
+		echo "ERROR : $1"
+	fi
+}
+
+for liste in $(cat listes | cut -f 1 -d ' ')
+do
+	#echo -e "direction.primaire.j.darc.rx@orange.fr\ntellier.j.darc.rx@orange.fr" | sync_members -f - --welcome-msg=n --goodbye-msg=n --notifyadmin=n $liste
+	echo -e "" | sync_members -f - --welcome-msg=n --goodbye-msg=n --notifyadmin=n $liste
+  CODE=$(egrep "$liste " listes | cut -f 2 -d ' ')
+  init $CODE $liste
+done
