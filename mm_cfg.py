@@ -94,7 +94,7 @@ DEFAULT_SEND_REMINDERS = 0
 # postfix-to-mailman.py), but be sure to see
 # /usr/share/doc/mailman/README.Debian first.
 MTA='Postfix'
-POSTFIX_ALIAS_CMD = '/bin/true'
+#POSTFIX_ALIAS_CMD = '/bin/true'
 #POSTFIX_MAP_CMD = 'chgrp Debian-exim'
 POSTFIX_MAP_CMD = 'chmod o+r'
 POSTFIX_STYLE_VIRTUAL_DOMAINS = [ 'jdarc.fr' ]
