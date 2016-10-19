@@ -1,13 +1,22 @@
 from debian
 env DEBIAN_FRONTEND noninteractive
+run sed -e 's/httpredir.debian.org/debian.mirrors.ovh.net/g' -i /etc/apt/sources.list
+run echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen 
+
 run apt-get update \
     && apt-get install -y \
       apache2 \
       ca-certificates \
       exim4 \
+      locales \
       mailman \
       rsync \
     && apt-get clean
+
+run echo "mailman  mailman/default_server_language select fr" | debconf-set-selections \
+    && echo "mailman  mailman/site_languages multiselect fr" | debconf-set-selections \
+    && echo "mailman  mailman/used_languages string fr" | debconf-set-selections \
+    && dpkg-reconfigure mailman
 
 add vhost.conf /etc/apache2/sites-enabled/mailman.conf
 #run rm /etc/apache2/sites-enabled/000-default.conf
