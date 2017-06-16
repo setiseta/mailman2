@@ -6,3 +6,9 @@ This container run
 - exim4
 - crontab
     
+Environments:
+- MAIL_DOMAIN
+- URL_HOST
+- LANGUAGE (Default: en)
+- MM_PASSWORD
+- ADMIN_EMAIL

@@ -62,17 +62,17 @@ IMAGE_LOGOS         = '/images/mailman/'
 
 #-------------------------------------------------------------
 # Default domain for email addresses of newly created MLs
-DEFAULT_EMAIL_HOST = 'jdarc.fr'
+DEFAULT_EMAIL_HOST = '{{ MAIL_DOMAIN }}'
 #-------------------------------------------------------------
 # Default host for web interface of newly created MLs
-DEFAULT_URL_HOST   = 'ml.jdarc.fr'
+DEFAULT_URL_HOST   = '{{ URL_HOST }}'
 #-------------------------------------------------------------
 # Required when setting any of its arguments.
 add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 
 #-------------------------------------------------------------
 # The default language for this server.
-DEFAULT_SERVER_LANGUAGE = 'fr'
+DEFAULT_SERVER_LANGUAGE = '{{ LANGUAGE }}'
 
 #-------------------------------------------------------------
 # Iirc this was used in pre 2.1, leave it for now
@@ -97,7 +97,7 @@ MTA='Postfix'
 #POSTFIX_ALIAS_CMD = '/bin/true'
 #POSTFIX_MAP_CMD = 'chgrp Debian-exim'
 POSTFIX_MAP_CMD = 'chmod o+r'
-POSTFIX_STYLE_VIRTUAL_DOMAINS = [ 'jdarc.fr' ]
+POSTFIX_STYLE_VIRTUAL_DOMAINS = [ '{{ MAIL_DOMAIN }}' ]
 
 #-------------------------------------------------------------
 # Uncomment if you want to filter mail with SpamAssassin. For
