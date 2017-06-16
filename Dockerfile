@@ -10,7 +10,8 @@ run apt-get update \
       locales \
       mailman \
       rsync \
-    && apt-get clean
+    && apt-get clean \
+    && a2dissite 000-default
 
 add vhost.conf /etc/apache2/sites-enabled/mailman.conf
 #run rm /etc/apache2/sites-enabled/000-default.conf
