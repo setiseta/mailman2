@@ -5,20 +5,28 @@ MAIL_DOMAIN=${MAIL_DOMAIN:-}
 URL_HOST=${URL_HOST:-}
 LANGUAGE=${LANGUAGE:-EN}
 MM_PASSWORD=${MM_PASSWORD:-}
+MM_SITEPASS=${MM_SITEPASS:-myunsecurepwd}
 ADMIN_EMAIL=${ADMIN_EMAIL:-}
 
 export MAIL_DOMAIN
 export URL_HOST
 export LANGUAGE
 export MM_PASSWORD
+export MM_SITEPASS
 export ADMIN_EMAIL
 
+/usr/lib/mailman/bin/genaliases
+postconf -e 'relay_domains = $MAIL_DOMAIN'
+postconf -e 'transport_maps = hash:/etc/postfix/transport'
+postconf -e 'mailman_destination_recipient_limit = 1'
+postconf -e 'alias_maps = hash:/etc/aliases, hash:/var/lib/mailman/data/aliases'
+echo "$MAIL_DOMAIN  mailman:" > /etc/postfix/transport
+postmap -v /etc/postfix/transport
+
 cp -f /etc/mailman/mm_cfg.py.tpl /etc/mailman/mm_cfg.py
-cp -f /etc/exim4/update-exim4.conf.conf.tpl /etc/exim4/update-exim4.conf.conf
 # Substitute configuration
 for VARIABLE in `env | cut -f1 -d=`; do
   sed -i "s={{ $VARIABLE }}=${!VARIABLE}=g" /etc/mailman/mm_cfg.py
-  sed -i "s={{ $VARIABLE }}=${!VARIABLE}=g" /etc/exim4/update-exim4.conf.conf
 done
 
 if [ ! -d /var/lib/mailman/lists ] 
@@ -32,7 +40,12 @@ then
   newlist --quiet mailman $ADMIN_EMAIL $MM_PASSWORD
 fi
 
-/etc/init.d/exim4 start
+chown root:list /var/lib/mailman/data/aliases
+chown root:list /etc/aliases
+newaliases
+mmsitepass $MM_SITEPASS
+
+/etc/init.d/postfix start
 /etc/init.d/mailman start
 /etc/init.d/apache2 start
 

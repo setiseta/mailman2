@@ -3,7 +3,7 @@ A simple container to host mailman 2 mailing lists.
 
 This container run 
 - mailman
-- exim4
+- postfix
 - crontab
     
 Environments:
@@ -11,4 +11,5 @@ Environments:
 - URL_HOST
 - LANGUAGE (Default: en)
 - MM_PASSWORD
+- MM_SITEPASS
 - ADMIN_EMAIL
