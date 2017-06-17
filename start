@@ -15,7 +15,7 @@ export MM_PASSWORD
 export MM_SITEPASS
 export ADMIN_EMAIL
 
-/usr/lib/mailman/bin/genaliases
+
 postconf -e 'relay_domains = $MAIL_DOMAIN'
 postconf -e 'transport_maps = hash:/etc/postfix/transport'
 postconf -e 'mailman_destination_recipient_limit = 1'
@@ -44,6 +44,7 @@ chown root:list /var/lib/mailman/data/aliases
 chown root:list /etc/aliases
 newaliases
 mmsitepass $MM_SITEPASS
+/usr/lib/mailman/bin/genaliases
 
 /etc/init.d/postfix start
 /etc/init.d/mailman start
