@@ -13,3 +13,8 @@ Environments:
 - MM_PASSWORD
 - MM_SITEPASS
 - ADMIN_EMAIL
+
+Volumes:
+- for persistance you may mount this to host, or use named volumes:
+  - /var/lib/mailman
+  - /var/spool/postfix/

@@ -3,7 +3,7 @@ FROM ubuntu
 ENV DEBIAN_FRONTEND noninteractive
 RUN sed -e 's/httpredir.debian.org/debian.mirrors.ovh.net/g' -i /etc/apt/sources.list
 
-ADD start /usr/local/bin/start
+ADD init.sh /init.sh
 
 RUN apt-get update \
     && apt-get install -y \
@@ -16,15 +16,16 @@ RUN apt-get update \
     && apt-get clean \
     && a2dissite 000-default \
     && a2enmod cgid \
-    && chmod +x /usr/local/bin/start \
+    && chmod +x /init.sh \
     && mv /var/lib/mailman /mailman \
     && mkdir /var/lib/mailman \
-    && chown :list /var/lib/mailman
+    && chown :list /var/lib/mailman \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && mv /var/spool/postfix /postfixtemplate
 
 ADD vhost.conf /etc/apache2/sites-enabled/mailman.conf
 ADD mm_cfg.py /etc/mailman/mm_cfg.py.tpl
 
 EXPOSE 80 25
-ENV MM_PASSWORD=password
-VOLUME ["/var/lib/mailman"]
-CMD ["/usr/local/bin/start"]
+VOLUME ["/var/lib/mailman", "/var/spool/postfix/"]
+CMD ["/init.sh"]
