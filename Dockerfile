@@ -15,7 +15,7 @@ RUN apt-get update \
       rsync \
     && apt-get clean \
     && a2dissite 000-default \
-    a2enmod cgid \
+    && a2enmod cgid \
     && chmod +x /usr/local/bin/start \
     && mv /var/lib/mailman /mailman \
     && mkdir /var/lib/mailman \
